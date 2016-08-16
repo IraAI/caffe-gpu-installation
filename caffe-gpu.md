@@ -1,10 +1,11 @@
-##TESTED ON GeForce GT 635M AND GeForce GTX 660
+###TESTED ON GeForce GT 635M AND GeForce GTX 660
 
 
 
-###install nvidia drivers (go to software&updates - choose last proprietary tested)
-###download cuda8 and Patch1 https://developer.nvidia.com/cuda-release-candidate-download
-###download cudnn5.1 Library for Linux https://developer.nvidia.com/rdp/cudnn-download
+
+####install nvidia drivers (go to software&updates - choose last proprietary tested)
+####download cuda8 and Patch1 https://developer.nvidia.com/cuda-release-candidate-download
+####download cudnn5.1 Library for Linux https://developer.nvidia.com/rdp/cudnn-download
 
 
 sudo apt-get install -y build-essential cmake git pkg-config
@@ -28,6 +29,7 @@ sudo apt-get install -y libopencv-dev
 
 ###CUDA
 
+
 sudo dpkg -i cuda-repo-ubuntu1604-8-0-rc_8.0.27-1_amd64.deb
 
 sudo apt-get update
@@ -42,7 +44,7 @@ restart terminal
 
 cd /usr/local/cuda-8.0/samples/
 
-###open with software install 'cuda-misc-headers-8-0_8.0.27.1-1_amd64.deb' (Patch 1 from cuda toolkit page)
+####open with software install 'cuda-misc-headers-8-0_8.0.27.1-1_amd64.deb' (Patch 1 from cuda toolkit page)
 
 sudo make all -j8
 
@@ -50,7 +52,8 @@ sudo make all -j8
 
 ###CUDNN
 
-####create folder  in home directory. for example
+
+#####create folder  in home directory. for example
 
 mkdir ~/code 
 
@@ -82,7 +85,7 @@ for req in $(cat requirements.txt); do sudo -H pip install $req --upgrade; done
 
 sudo apt-get update
 
-###export PYTHONPATH to your python folder in caffe folder. for example:
+####export PYTHONPATH to your python folder in caffe folder. for example:
 
 export PYTHONPATH=/home/null/code/caffe/python:$PYTHONPATH'
 
@@ -90,8 +93,8 @@ cd ..
 
 cp Makefile.config.example Makefile.config
 
-#check make.config file in caffe folder:
-'''
+####check make.config file in caffe folder:
+
   uncomment:
     USE_CUDNN := 1
     WITH_PYTHON_LAYER := 1
@@ -104,7 +107,8 @@ cp Makefile.config.example Makefile.config
     INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include /usr/include/hdf5/serial
 
     LIBRARY_DIRS := $(PYTHON_LIB) /usr/local/lib /usr/lib /usr/lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu/hdf5/serial
-'''
+
+
 
 cd caffe/build
 
@@ -131,4 +135,4 @@ python
 import caffe
 
 
-CONGRATS!
+#CONGRATS!
