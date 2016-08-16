@@ -1,8 +1,5 @@
-###How to install Caffe on Ubuntu 16.04 with GPU (Cuda 8, CuDNN 5.1)
-
-###TESTED ON GeForce GT 635M AND GeForce GTX 660
-
-
+##How to install Caffe on Ubuntu 16.04 with GPU (Cuda 8, CuDNN 5.1)
+(Tested on GeForce GT 635M and GeForce GTX 660)
 
 
 ####install nvidia drivers (go to software&updates - choose last proprietary tested)
