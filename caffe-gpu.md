@@ -1,10 +1,10 @@
-TESTED ON GeForce GT 635M AND GeForce GTX 660
+#TESTED ON GeForce GT 635M AND GeForce GTX 660
 
 
 
-#install nvidia drivers (go to software&updates - choose last proprietary tested)
-#download cuda8 and Patch1 https://developer.nvidia.com/cuda-release-candidate-download
-#download cudnn5.1 Library for Linux https://developer.nvidia.com/rdp/cudnn-download
+##install nvidia drivers (go to software&updates - choose last proprietary tested)
+##download cuda8 and Patch1 https://developer.nvidia.com/cuda-release-candidate-download
+##download cudnn5.1 Library for Linux https://developer.nvidia.com/rdp/cudnn-download
 
 
 sudo apt-get install -y build-essential cmake git pkg-config
