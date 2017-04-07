@@ -99,7 +99,15 @@ sudo apt-get update
 
 echo 'export PYTHONPATH=/home/user/code/caffe/python:$PYTHONPATH' >> ~/.bashrc
 
-cd ..
+
+cd /usr/lib/x86_64-linux-gnu
+
+sudo ln -s libhdf5_serial.so.10.1.0 libhdf5.so
+
+sudo ln -s libhdf5_serial.so.10.1.0 libhdf5_hl.so
+
+
+cd caffe
 
 cp Makefile.config.example Makefile.config
 
