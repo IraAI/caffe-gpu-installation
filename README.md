@@ -1,14 +1,14 @@
-How to install Caffe on Ubuntu 16.04 with GPU (Cuda 8, CuDNN 5.1)
+How to install Caffe on Ubuntu 16.04 with GPU (Cuda 8.0.61, CuDNN 6.0)
 
 (Tested on GeForce GT 635M and GeForce GTX 660)
 
 
 
-install nvidia drivers (go to software&updates - choose last proprietary tested)
+install nvidia drivers (go to software&updates - choose last proprietary tested) - not needed if use cuda.run file 
 
-download cuda8 and Patch1 https://developer.nvidia.com/cuda-release-candidate-download
+download cuda 8.0 https://developer.nvidia.com/cuda-release-candidate-download
 
-download cudnn5.1 Library for Linux https://developer.nvidia.com/rdp/cudnn-download
+download cudnn 6.0 Library for Linux https://developer.nvidia.com/rdp/cudnn-download
 
 
 ```shell
@@ -36,21 +36,25 @@ CUDA
 
 ```shell
 
-sudo dpkg -i cuda-repo-ubuntu1604-8-0-rc_8.0.27-1_amd64.deb
+#for cuda.deb (I got Error Unmet dependencies for last vesrion of cuda 8.0.61 so better download .run file):
+#sudo dpkg -i cuda-repo-ubuntu1604-8-0-local-ga2_8.0.61-1_amd64.deb
+#sudo apt-get update
+#sudo apt-get install cuda
+#sudo apt-get install cuda-drivers
 
-sudo apt-get update
+#for cuda.run file (follow the on-screen prompts):
 
-sudo apt-get install cuda
+sudo sh cuda_8.0.61_375.26_linux.run
 
-sudo apt-get install cuda-drivers
+#next for both
+
+echo 'export PATH=/usr/local/cuda-8.0/bin:$PATH' » ~/.bashrc
 
 echo 'export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64:$LD_LIBRARY_PATH' >> ~/.bashrc
 
 #restart terminal
 
 cd /usr/local/cuda-8.0/samples/
-
-#open with software install 'cuda-misc-headers-8-0_8.0.27.1-1_amd64.deb' (Patch 1 from cuda toolkit page)
 
 sudo make all -j8
 ```
@@ -65,7 +69,7 @@ mkdir ~/code
 
 cd ~/code
 
-tar -xzvf cudnn-8.0-linux-x64-v5.1.tgz
+tar -xzvf cudnn-8.0-linux-x64-v5.1.tgz #or extract cudnn file
 
 cd cuda/lib64/
 
@@ -90,9 +94,10 @@ for req in $(cat requirements.txt); do sudo -H pip install $req --upgrade; done
 
 sudo apt-get update
 
-#export PYTHONPATH to your python folder in caffe folder. for example:
+#export PYTHONPATH to your python folder in caffe folder (don't forget to write your user name and folder correctly)
+#for example:
 
-export PYTHONPATH=/home/null/code/caffe/python:$PYTHONPATH
+echo 'export PYTHONPATH=/home/user/code/caffe/python:$PYTHONPATH' >> ~/.bashrc
 
 cd ..
 
